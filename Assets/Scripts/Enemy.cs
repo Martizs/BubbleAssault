@@ -56,7 +56,6 @@ public class Enemy : MonoBehaviour
         else
         {
             hp--;
-            Debug.Log($"hp - {hp}");
             CreateCloneAtObject(hitAnimation);
             CreateCloneAtObject(hitSound);
         }

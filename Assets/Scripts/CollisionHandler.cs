@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class CollisionHandler : MonoBehaviour
 {
+    const string FINISH_TAG = "Finish";
+
     [SerializeField]
     float afterCrashDelay = 1f;
 
@@ -13,25 +16,48 @@ public class CollisionHandler : MonoBehaviour
 
     AudioSource starShipAudio;
 
+    [SerializeField]
+    GameObject[] lasers;
+
+    ScoreBoard scoreBoard;
+
     private void Start()
     {
         starShipAudio = GetComponent<AudioSource>();
+        scoreBoard = FindObjectOfType<ScoreBoard>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        StartCrashSequence();
+        GameObject.FindGameObjectWithTag("PlayerRig").GetComponent<Animator>().enabled = false;
+
+        GetComponent<PlayerControls>().enabled = false;
+
+        foreach (GameObject laser in lasers)
+        {
+            laser.GetComponent<ParticleSystem>().Stop();
+        }
+
+        if (other.gameObject.tag != FINISH_TAG)
+        {
+            StartCrashSequence();
+        }
+        else
+        {
+            InitiateWin();
+        }
+    }
+
+    void InitiateWin()
+    {
+        scoreBoard.Finish();
     }
 
     void StartCrashSequence()
     {
-        GameObject.FindGameObjectsWithTag("PlayerRig")[0].GetComponent<Animator>().enabled = false;
-
-        GetComponent<PlayerControls>().enabled = false;
+        GetComponent<MeshRenderer>().enabled = false;
         starShipAudio.Play();
         crashAnimation.SetActive(true);
-
-        GetComponent<MeshRenderer>().enabled = false;
 
         Delayed("ReloadScene", afterCrashDelay);
     }

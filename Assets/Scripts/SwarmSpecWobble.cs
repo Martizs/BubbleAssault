@@ -11,32 +11,21 @@ public class SwarmSpecWobble : MonoBehaviour
     Vector3 startingPosition;
 
     [SerializeField]
-    float wobbleFactor = 1f;
+    float wobbleFactor = 10f;
 
     [SerializeField]
-    float period = 2f;
+    float period = 1f;
 
     private int lastCycle = 0;
 
     Vector3 wobbleVector;
-    float[] wobbleVectorArray;
-
-    int wobblePositionIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         startingPosition = transform.localPosition;
 
-        wobbleVectorArray = new float[] { 0, 0, 0 };
-
-        wobbleVectorArray[wobblePositionIndex] = wobbleFactor;
-
-        wobbleVector = new Vector3(
-            wobbleVectorArray[0],
-            wobbleVectorArray[1],
-            wobbleVectorArray[2]
-        );
+        wobbleVector = UnityEngine.Random.insideUnitSphere;
     }
 
     // Update is called once per frame
@@ -55,19 +44,8 @@ public class SwarmSpecWobble : MonoBehaviour
         if (lastCycle < checkCycle)
         {
             lastCycle = checkCycle;
-            wobbleVectorArray = new float[] { 0, 0, 0 };
-            wobblePositionIndex++;
 
-            wobblePositionIndex =
-                wobblePositionIndex >= wobbleVectorArray.Length ? 0 : wobblePositionIndex;
-
-            wobbleVectorArray[wobblePositionIndex] = wobbleFactor;
-
-            wobbleVector = new Vector3(
-                wobbleVectorArray[0],
-                wobbleVectorArray[1],
-                wobbleVectorArray[2]
-            );
+            wobbleVector = UnityEngine.Random.insideUnitSphere;
         }
 
         // Debug.Log(" cycles " + cycles);
@@ -77,7 +55,7 @@ public class SwarmSpecWobble : MonoBehaviour
         // So that it would go from 0 to 1 instead of -1 to 1
         float movementFactor = (rawSinWave + 1f) / 2f;
 
-        Vector3 offset = wobbleVector * movementFactor;
+        Vector3 offset = wobbleVector * movementFactor * wobbleFactor;
         transform.localPosition = startingPosition + offset;
     }
 }
