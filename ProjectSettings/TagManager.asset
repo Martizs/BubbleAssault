@@ -10,6 +10,7 @@ TagManager:
   - SpawnObject
   - HitAnimation
   - HitSound
+  - MasterTimeline
   layers:
   - Default
   - TransparentFX
