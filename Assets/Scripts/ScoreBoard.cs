@@ -13,6 +13,18 @@ public class ScoreBoard : MonoBehaviour
     [SerializeField]
     GameObject buttons;
 
+    [SerializeField]
+    float textStartXPercentage = 13;
+
+    [SerializeField]
+    float textStartYPercentage = 2.5f;
+
+    [SerializeField]
+    float textFinishXPercentage = 47;
+
+    [SerializeField]
+    float textFinishYPercentage = 88;
+
     private void Start()
     {
         scoreText = GetComponent<TMP_Text>();
@@ -24,7 +36,11 @@ public class ScoreBoard : MonoBehaviour
         buttons.SetActive(false);
         score = 0;
         scoreText.text = $"Ola boi, your score: {score}";
-        GetComponent<RectTransform>().transform.position = new Vector2(135, 14);
+
+        GetComponent<RectTransform>().transform.position = new Vector2(
+            Screen.width * textStartXPercentage / 100,
+            Screen.height * textStartYPercentage / 100
+        );
     }
 
     public void IncreaseScore()
@@ -41,7 +57,10 @@ public class ScoreBoard : MonoBehaviour
         }
 
         scoreText.text = $"Current score: {score} \n High score: {highScore}";
-        GetComponent<RectTransform>().transform.position = new Vector2(490, 505);
+        GetComponent<RectTransform>().transform.position = new Vector2(
+            Screen.width * textFinishXPercentage / 100,
+            Screen.height * textFinishYPercentage / 100
+        );
         buttons.SetActive(true);
     }
 }
