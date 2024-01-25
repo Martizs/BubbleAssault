@@ -3349,11 +3349,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
---- !u!198 &2047961113 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 466275901206905625, guid: 206b9b42d22b3bf4095b0de79d898f01, type: 3}
-  m_PrefabInstance: {fileID: 2378535032051553100}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2087236607
 GameObject:
   m_ObjectHideFlags: 0
@@ -3568,14 +3563,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 544522626}
     m_Modifications:
-    - target: {fileID: 1315246334930942424, guid: 206b9b42d22b3bf4095b0de79d898f01, type: 3}
-      propertyPath: finishSound
-      value: 
-      objectReference: {fileID: 8300000, guid: e06a2b6a05f41e24fbbcb428c1fe9de4, type: 3}
-    - target: {fileID: 1315246334930942424, guid: 206b9b42d22b3bf4095b0de79d898f01, type: 3}
-      propertyPath: successParticles
-      value: 
-      objectReference: {fileID: 2047961113}
     - target: {fileID: 3693779149135030943, guid: 206b9b42d22b3bf4095b0de79d898f01, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3623,6 +3610,18 @@ PrefabInstance:
     - target: {fileID: 4037793984397996069, guid: 206b9b42d22b3bf4095b0de79d898f01, type: 3}
       propertyPath: m_Name
       value: PlayerShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069442871830717157, guid: 206b9b42d22b3bf4095b0de79d898f01, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069442871830717157, guid: 206b9b42d22b3bf4095b0de79d898f01, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069442871830717157, guid: 206b9b42d22b3bf4095b0de79d898f01, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 206b9b42d22b3bf4095b0de79d898f01, type: 3}
@@ -3749,10 +3748,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2912353552739998339, guid: 568cad875877f0f4390d224450198616, type: 3}
       propertyPath: m_Name
-      value: Finish
-      objectReference: {fileID: 0}
-    - target: {fileID: 2912353552739998339, guid: 568cad875877f0f4390d224450198616, type: 3}
-      propertyPath: m_TagString
       value: Finish
       objectReference: {fileID: 0}
     - target: {fileID: 5693609637748504578, guid: 568cad875877f0f4390d224450198616, type: 3}
